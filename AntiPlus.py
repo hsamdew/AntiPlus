@@ -21,10 +21,11 @@ from telebot import types
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
-token = '' #Token 
+token = '441076473:AAFU7F-iypGWumJLltygNMUd13o2mvIu048
+' #Token 
 bot = telebot.TeleBot(token)
 database = redis.StrictRedis(host='localhost', port=6379, db=0, decode_responses=True)
-sudos = [198794027,264150062] #Sudo IDs
+sudos = [378496552] #Sudo IDs
 channels = -1001054519880 #Channel ID
 db = "https://api.telegram.org/bot{}/getMe?".format(token)
 res = urllib.urlopen(db)
@@ -276,7 +277,7 @@ def panel(msg):
 		channel.add(types.InlineKeyboardButton('Owners > {}'.format(ownersgp), callback_data='ownerss'))
 		channel.add(types.InlineKeyboardButton('Promote > {}'.format(promotes), callback_data='promotess'))
 		channel.add(types.InlineKeyboardButton('Groups > {}'.format(groupss), callback_data='gps'))
-		channel.add(types.InlineKeyboardButton('🌐Channel🌐', url='https://telegram.me/PlusTM'))
+		channel.add(types.InlineKeyboardButton('🌐Channel🌐', url='https://telegram.me/.CyberSecurrity'))
 		bot.reply_to(msg, "👥Group Stats >".format(stats,groupss), reply_markup=channel)
 
 ######################################################################################
@@ -476,7 +477,7 @@ def id(msg):
 
 @bot.message_handler(commands=['creator'])
 def creator(msg):
-	bot.reply_to(msg, "AntiPlus\nنوشته شده توسط :\n@HajiNitro\n@PlusTM\nآدرس سورس ربات :\nhttps://github.com/PlusTM/AntiPlus\nستاره یادتون نره :)".format())
+	bot.reply_to(msg, "OMEGA PLUS\nنوشته شده توسط :\n@HSAMDEW\n@NationalTM\nآدرس سورس ربات :\nhttps://github.com/hsamdew/AntiPlus\nستاره یادتون نره :)".format())
 
 ######################################################################################
 
@@ -510,7 +511,7 @@ def kickme(msg):
 			id = msg.chat.id
 			#bot.reply_to(msg, "User [{}] Kicked! By Self".format(msg.from_user.id))
 			bot.kick_chat_member(msg.chat.id, msg.from_user.id)
-		except:
+		except:➍
 			bot.reply_to(msg, "I Can NoT Kick You:|".format())
 
 ######################################################################################
@@ -539,7 +540,7 @@ def delete(msg):
 def welcome(msg):
 	id = msg.from_user.id
 	channels = types.InlineKeyboardMarkup()
-	channels.add(types.InlineKeyboardButton('🌐Channel🌐', url='https://telegram.me/PlusTM'))
+	channels.add(types.InlineKeyboardButton('🌐Channel🌐', url='https://telegram.me/CyberSecurrity'))
 	text = database.hget("gpwlc","{}".format(msg.chat.id))
 	bot.reply_to(msg, "{}".format(text), reply_markup=channels)
 		
@@ -549,7 +550,7 @@ def welcome(msg):
 def welcome(msg):
 	id = msg.from_user.id
 	channels = types.InlineKeyboardMarkup()
-	channels.add(types.InlineKeyboardButton('🌐Channel🌐', url='https://telegram.me/PlusTM'))
+	channels.add(types.InlineKeyboardButton('🌐Channel🌐', url='https://telegram.me/CyberSecurrity'))
 	bot.reply_to(msg, "User [{}] Bye Bye:)".format(id), reply_markup=channels)
 		
 ######################################################################################
@@ -644,18 +645,14 @@ def callback_inline(call):
 		if call.from_user.id in sudos or database.sismember("owners"+str(call.message.chat.id), call.from_user.id):
 			gplink = call.message.chat.id
 			if call.data.startswith("untext"):
-				database.delete('text'+str(gplink)) 
-				bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=setting(gplink))
-				bot.answer_callback_query(callback_query_id=call.id, show_alert=False, text="Text has been UnLocked")
-
-			if call.data.startswith("text"):
+				database.5 call.data.startswith("text"):
 				database.set('text'+str(gplink), True)
 				bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=setting(gplink))
 				bot.answer_callback_query(callback_query_id=call.id, show_alert=False, text="Text has been Locked !") 
 
 			if call.data.startswith("unphoto"):
 				database.delete('photo'+str(gplink))
-				bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=setting(gplink))
+				bot.i(chat_id=call.message.chat.id, message_id=call.message.message_id, reply_markup=setting(gplink))
 				bot.answer_callback_query(callback_query_id=call.id, show_alert=False, text="Photo has been UnLocked !") 
 
 			if call.data.startswith("photo"):
